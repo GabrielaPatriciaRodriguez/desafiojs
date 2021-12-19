@@ -8,7 +8,7 @@ const contenedorMesas = $("#contenedor-Mesas");
 
 // const contenedorMesa = document.getElementById("mesa-Contenedor");
 const contenedorMesa = $("#mesa-Contenedor"); 
-//VERRRRRRR ME DA ERROR EN UNA FUNCION AGREGAR A LA MESA
+
 
 mostrarMesas (misMesas);
 
@@ -37,7 +37,9 @@ function mostrarMesas(array) {
 // En este supuesto hice un array de productos/platos/menu y los cargue en forma manual
 // Luego muestro en la pagina, en el HTML, en forma de cards
 
-const contenedorMenu = document.getElementById("contenedor-Menu");
+// const contenedorMenu = document.getElementById("contenedor-Menu");
+//Con JQuery
+const contenedorMenu = $("#contenedor-Menu");
 
 mostrarMenu(stockMenu);
 
@@ -59,9 +61,9 @@ function mostrarMenu(array) {
 
   </div>`);
 
-    let botonAgregar = document.getElementById(`botonAgregar${menu.id}`)
+    let botonAgregar = $(`#botonAgregar${menu.id}`)
 
-    botonAgregar.addEventListener(`click`, () => {
+    botonAgregar.on(`click`, () => {
       agregarALaMesa(menu.id)
     })
   });
@@ -71,13 +73,12 @@ function mostrarMenu(array) {
 
 function agregarALaMesa(id) {
   let menuAgregar = stockMenu.find(elemento => elemento.id === id);
-  let div = document.createElement("div");
-  div.style.cssText = "display:flex;width:50%; justify-content: space-between;"
   
-  div.innerHTML = `<p>id: ${menuAgregar.id}</p>
+  
+  $("#mesa-Contenedor").append(`<div style="display:flex;width:50%; justify-content: space-between;"><p>id: ${menuAgregar.id}</p>
                     <p>${menuAgregar.nombre}</p>
-                    <p>${menuAgregar.precio}</p>`
-  contenedorMesa.appendChild(div);
+                    <p>${menuAgregar.precio}</p></div>`)
+  
 }
 
 //SUPUESTO EN QUE SEA EL CLIENTE EL QUE CARGUE LOS PRODUCTOS
