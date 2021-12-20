@@ -2,11 +2,10 @@
 
 // SUPUESTO EN QUE SEA YO LA QUE CARGUE LAS MESAS
 
-// const contenedorMesas = document.getElementById("contenedor-Mesas");
-//Con JQuery
+
+//Desafio 12 - Con JQuery
 const contenedorMesas = $("#contenedor-Mesas");
 
-// const contenedorMesa = document.getElementById("mesa-Contenedor");
 const contenedorMesa = $("#mesa-Contenedor"); 
 
 
@@ -37,7 +36,7 @@ function mostrarMesas(array) {
 // En este supuesto hice un array de productos/platos/menu y los cargue en forma manual
 // Luego muestro en la pagina, en el HTML, en forma de cards
 
-// const contenedorMenu = document.getElementById("contenedor-Menu");
+
 //Con JQuery
 const contenedorMenu = $("#contenedor-Menu");
 
@@ -74,7 +73,7 @@ function mostrarMenu(array) {
 function agregarALaMesa(id) {
   let menuAgregar = stockMenu.find(elemento => elemento.id === id);
   
-  
+  //Con JQuery
   $("#mesa-Contenedor").append(`<div style="display:flex;width:50%; justify-content: space-between;"><p>id: ${menuAgregar.id}</p>
                     <p>${menuAgregar.nombre}</p>
                     <p>${menuAgregar.precio}</p></div>`)
@@ -141,3 +140,52 @@ botonProductos.addEventListener('click', () => {
   }
   
 })
+
+//Desafio 13
+
+$(function(){
+  
+  //Hacer click en boton con id button1 y que se oculte el parrafo con id primero
+  $("#button1").click(function(){
+  $("#primero").hide();
+  });
+
+  //Hacer click en boton con id button2 y que se oculte el parrafo con id primero
+  $("#button2").click(function(){
+    $("#primero").show();
+  });
+
+  //ANIMACIONES CONCATENADAS: El parrafo que tiene la clase segundo se anima teniendo un 
+  //ancho de 200px, se oculta, hay una espera(delay) de unos milisegundos, y luego aparece 
+  //animandose con el font-size de 22px, por ultimo vuelve al ancho del 100%
+  $(".segundo").animate({"width":"200px"}).fadeOut(3000).delay(1000).animate({"font-size":"22px"}).fadeIn(5000).animate({"width": "100%"});
+
+  //Cuando paso el mouse por el parrafo con la clase tercero el parrafo que tiene el id tercero 
+  //se oculta
+  $(".tercero").mouseenter(function(){
+    $("#tercero").hide();
+  });
+
+  //Cuando paso el mouse por el parrafo con la clase cuarto el parrafo que tiene el id tercero 
+  //se aparece
+  $(".cuarto").mouseenter(function(){
+    $("#tercero").show();
+  });
+
+  //Cuando paso el mouse por el parrafo con clase primero el parrafo con id cuarto desaparece
+  //en forma gradual, tiene una pequeña transicion
+  $(".primero").mouseenter(function(){
+    $("#cuarto").fadeOut();
+  });
+
+  //Cuando paso el mouse por el parrafo con clase segundo el parrafo con id cuarto aparece
+  //en forma gradual, tiene una pequeña transicion
+  $(".segundo").mouseleave(function(){
+    $("#cuarto").fadeIn();
+  });
+
+  //El h4 a traves de css lo oculte con display none y con el metodo show lo muestro:
+  $("h4").show();
+  
+});
+
