@@ -36,11 +36,16 @@ function mostrarMesas(array) {
 // En este supuesto hice un array de productos/platos/menu y los cargue en forma manual
 // Luego muestro en la pagina, en el HTML, en forma de cards
 
+let stockMenu = [];
 
 //Con JQuery
 const contenedorMenu = $("#contenedor-Menu");
 
-mostrarMenu(stockMenu);
+//mostrarMenu(stockMenu);
+
+$.getJSON("menu.json", function(data){
+  console.log(data)
+})
 
 function mostrarMenu(array) {
   array.forEach(menu => {
